@@ -1,30 +1,88 @@
 <template>
-  <div id="nav">
-    <router-link to="/films">Фильмы</router-link> |
-    <router-link to="/tv">Телеканалы</router-link>
-  </div>
-  <router-view />
+  <the-header @search="handleSearch"></the-header>
+  <router-view v-slot="{ Component }" name="nav">
+    <transition name="popUp" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+  <router-view v-slot="{ Component }">
+    <transition name="popUp" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+  <the-footer></the-footer>
 </template>
 
+<script>
+import TheHeader from "./components/layout/TheHeader";
+import TheFooter from "./components/layout/TheFooter";
+export default {
+  components: {
+    TheHeader,
+    TheFooter,
+  },
+  data() {
+    return {
+      data: [],
+    };
+  },
+  methods: {
+    handleSearch(query) {
+      console.log(query);
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap");
+
+:root {
+  --var-main-dark: #333;
+  --var-main-red: #e5261e;
+  --var-main-darkRed: #cc221b;
 }
 
-#nav {
-  padding: 30px;
+* {
+  box-sizing: border-box;
+  font-family: "Rubik", serif;
+  color: var(--var-main-dark);
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+body {
+  padding: 0;
+  margin: 0;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1280px) {
+    padding: 0 40px;
   }
 }
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popUp-enter-active {
+  animation: popUp 0.4s;
+}
+.popUp-leave-active {
+  animation: popUp 0.3s reverse;
+}
+
+// .popUp-enter-from {}
+// .popUp-enter-to {}
+// .popUp-leave-from {}
+// .popUp-leave-to {}
 </style>
