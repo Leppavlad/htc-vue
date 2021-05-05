@@ -7,10 +7,10 @@
   </router-view>
   <router-view v-slot="{ Component }">
     <transition name="popUp" mode="out-in">
-      <component :is="Component" />
+      <component :is="Component" @isLoading="handleLoading" />
     </transition>
   </router-view>
-  <the-footer></the-footer>
+  <the-footer v-if="!isLoading"></the-footer>
 </template>
 
 <script>
@@ -24,11 +24,15 @@ export default {
   data() {
     return {
       data: [],
+      isLoading: true,
     };
   },
   methods: {
     handleSearch(query) {
       console.log(query);
+    },
+    handleLoading(isLoading) {
+      this.isLoading = isLoading;
     },
   },
 };
@@ -61,6 +65,11 @@ body {
   @media screen and (max-width: 1280px) {
     padding: 0 40px;
   }
+}
+
+.page {
+  padding-top: 30px;
+  padding-bottom: 70px;
 }
 
 @keyframes popUp {

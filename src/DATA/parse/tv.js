@@ -1,7 +1,14 @@
 // Source: https://tv.yandex.ru/
+function hashCode(str) {
+  return str.split("").reduce(function(a, b) {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+}
 
 const results = {};
-const channel = document.querySelector(".channel-header__text").innerHTML;
+let channel = document.querySelector(".channel-header__text").innerHTML;
+channel = hashCode(channel) + "_" + channel;
 const date = document
   .querySelector(".calendar__item_selected")
   .getAttribute("href")

@@ -5,11 +5,11 @@ export default {
     lastUpdate: null,
   },
   mutations: {
-    setLastUpdate(state) {
-      state.lastUpdate = new Date().getTime();
-    },
     setFilms(state, payload) {
       state.films = payload;
+    },
+    setLastUpdate(state) {
+      state.lastUpdate = new Date().getTime();
     },
   },
   actions: {
@@ -37,9 +37,6 @@ export default {
   getters: {
     films(state) {
       return state.films;
-    },
-    lastUpdate(state) {
-      return state.lastUpdate;
     },
     needsUpdate(state) {
       const currentTime = new Date().getTime();

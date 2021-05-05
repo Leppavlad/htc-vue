@@ -1,10 +1,12 @@
 <template>
-  <div class="container">
-    <nav>
-      <router-link :to="linkFilms">Фильмы</router-link>
-      <router-link :to="linkTV">Телеканалы</router-link>
-    </nav>
-  </div>
+  <section class="nav">
+    <div class="container">
+      <nav>
+        <router-link :to="linkFilms">Фильмы</router-link>
+        <router-link :to="linkTV">Телеканалы</router-link>
+      </nav>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -23,6 +25,7 @@ export default {
 <style lang="scss" scoped>
 nav {
   margin-top: 40px;
+  padding-bottom: 10px;
   text-align: center;
 }
 a {

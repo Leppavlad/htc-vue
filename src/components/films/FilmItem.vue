@@ -3,7 +3,7 @@
     <div class="film">
       <div class="film__content">
         <div class="film__poster">
-          <img :src="img" />
+          <img v-if="img" :src="img" />
         </div>
         <div class="film__description">
           <p>{{ description }}</p>
@@ -57,6 +57,7 @@ export default {
   &__poster {
     width: 100%;
     height: 370px;
+    background-color: #f2f2f2;
 
     img {
       width: 100%;

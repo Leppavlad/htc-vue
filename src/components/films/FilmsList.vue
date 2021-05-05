@@ -1,8 +1,12 @@
 <template>
   <section class="new">
     <div class="container">
-      <base-spinner v-if="isLoading"></base-spinner>
+      <template v-if="isLoading && films.length == 0">
+        <base-spinner></base-spinner>
+      </template>
+
       <p v-if="!isLoading && films.length == 0">Не найдено фильмов</p>
+
       <template v-else>
         <h2 class="section-title">🔥 Новинки</h2>
         <div class="wrapper">
@@ -26,6 +30,11 @@ export default {
   components: {
     FilmItem,
   },
+  data() {
+    return {
+      placeholder: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+    };
+  },
   props: ["films", "isLoading"],
 };
 </script>
@@ -35,6 +44,7 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: relative;
 
   @media screen and (max-width: 1280px) {
     justify-content: space-around;
