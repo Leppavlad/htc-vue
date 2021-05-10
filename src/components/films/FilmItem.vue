@@ -5,7 +5,7 @@
         <div class="film__poster">
           <img v-if="img" :src="img" />
         </div>
-        <div class="film__description">
+        <div class="film__description" data-simplebar>
           <p>{{ description }}</p>
         </div>
       </div>
@@ -41,7 +41,7 @@ export default {
 .film {
   width: 280px;
   height: 430px;
-  margin: 5px;
+  margin: 7px;
   position: relative;
 
   &__content {

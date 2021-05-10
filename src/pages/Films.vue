@@ -1,6 +1,6 @@
 <template>
   <section class="page">
-    <films-list :films="films" :isLoading="isLoading"></films-list>
+    <films-list :films="filmSearch" :isLoading="isLoading"></films-list>
     <genres-list></genres-list>
   </section>
 </template>
@@ -22,6 +22,12 @@ export default {
   computed: {
     films() {
       return this.$store.getters["films/films"];
+    },
+    filmSearch() {
+      const search = this.$route.query.search || "";
+      return this.films.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
     },
     needsUpdate() {
       return this.$store.getters["films/needsUpdate"];

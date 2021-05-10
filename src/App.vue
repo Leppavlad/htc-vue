@@ -1,39 +1,85 @@
 <template>
-  <the-header @search="handleSearch"></the-header>
+  <the-header
+    :user="user"
+    :userName="userName"
+    @auth="authOpen"
+    @changeName="changeNameOpen"
+  >
+  </the-header>
+
+  <Auth :show="authIsOpen" :close="authClose" />
+  <ChangeUserName :show="changeNameIsOpen" :close="changeNameClose" />
+
   <router-view v-slot="{ Component }" name="nav">
     <transition name="popUp" mode="out-in">
       <component :is="Component" />
     </transition>
   </router-view>
+
   <router-view v-slot="{ Component }">
     <transition name="popUp" mode="out-in">
       <component :is="Component" @isLoading="handleLoading" />
     </transition>
   </router-view>
+
   <the-footer v-if="!isLoading"></the-footer>
 </template>
 
 <script>
 import TheHeader from "./components/layout/TheHeader";
+import Auth from "./components/Auth";
+import ChangeUserName from "./components/ChangeUserName";
 import TheFooter from "./components/layout/TheFooter";
 export default {
   components: {
     TheHeader,
+    Auth,
+    ChangeUserName,
     TheFooter,
   },
   data() {
     return {
       data: [],
       isLoading: true,
+      authIsOpen: false,
+      changeNameIsOpen: false,
     };
   },
-  methods: {
-    handleSearch(query) {
-      console.log(query);
+  computed: {
+    user() {
+      return this.$store.getters["user"];
     },
+    userAuth() {
+      return this.$store.getters["userAuth"];
+    },
+    userProfile() {
+      return this.$store.getters["userProfile"];
+    },
+    userName() {
+      if (this.userProfile.firstName) {
+        return `${this.userProfile.firstName} ${this.userProfile.lastName[0]}.`;
+      } else return "User";
+    },
+  },
+  methods: {
     handleLoading(isLoading) {
       this.isLoading = isLoading;
     },
+    authOpen() {
+      this.authIsOpen = true;
+    },
+    authClose() {
+      this.authIsOpen = false;
+    },
+    changeNameOpen() {
+      this.changeNameIsOpen = true;
+    },
+    changeNameClose() {
+      this.changeNameIsOpen = false;
+    },
+  },
+  created() {
+    this.$store.dispatch("autoAuth");
   },
 };
 </script>
@@ -51,6 +97,13 @@ export default {
   box-sizing: border-box;
   font-family: "Rubik", serif;
   color: var(--var-main-dark);
+}
+
+html {
+  font-size: 16px;
+  @media screen and (max-width: 425px) {
+    font-size: 14px;
+  }
 }
 
 body {
@@ -82,7 +135,6 @@ body {
     transform: translateY(0);
   }
 }
-
 .popUp-enter-active {
   animation: popUp 0.4s;
 }
@@ -90,8 +142,13 @@ body {
   animation: popUp 0.3s reverse;
 }
 
-// .popUp-enter-from {}
-// .popUp-enter-to {}
-// .popUp-leave-from {}
-// .popUp-leave-to {}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Edge,  and Firefox */
+}
 </style>

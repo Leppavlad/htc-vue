@@ -3,7 +3,7 @@
     <div class="container">
       <div class="wrapper">
         <a href="https://htc-cs.ru" rel="noopener" target="_blank" class="logo">
-          <img src="@/assets/logo-company.png" alt="" />
+          <img src="@/assets/logo-company.svg" alt="" />
         </a>
         <div class="contacts">
           <p>
@@ -32,10 +32,10 @@
 .logo {
   width: 32px;
   margin-right: 40px;
-}
 
-img {
-  width: 100%;
+  @media screen and (max-width: 320px) {
+    display: none;
+  }
 }
 
 .wrapper {

@@ -16,12 +16,14 @@ export default {
 <style lang="scss" scoped>
 a,
 button {
-  width: 113px;
+  min-width: 113px;
   height: 38px;
+  padding: 0 15px;
   border: none;
   border-radius: 4px;
   background-color: var(--var-main-red);
   color: #fff;
+  font-weight: 500;
   cursor: pointer;
 
   &:hover {
@@ -33,6 +35,8 @@ button {
   background: none;
   color: var(--var-main-red);
   font-weight: 500;
+  width: auto;
+  padding: 0 18px;
   &:hover {
     background: none;
     text-decoration: underline;

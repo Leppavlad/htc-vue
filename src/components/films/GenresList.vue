@@ -6,10 +6,10 @@
         <genre-item
           v-for="genre in genres"
           :key="genre.id"
-          :id="genre.id"
           :title="genre.title"
           :img="genre.style.image"
           :color="genre.style.color"
+          :genreId="genre.id"
         >
         </genre-item>
       </div>
@@ -36,6 +36,10 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 1280px) {
+    justify-content: space-around;
+  }
 }
 
 .section-title {

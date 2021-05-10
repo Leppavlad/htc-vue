@@ -24,6 +24,10 @@ export default {
 
 <style lang="scss" scoped>
 nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 40px;
   padding-bottom: 10px;
   text-align: center;
@@ -32,7 +36,7 @@ a {
   font-weight: 500;
   font-size: 28px;
   text-decoration: none;
-  margin: 0 12px;
+  margin: 0 12px 12px;
 
   &.active {
     position: relative;

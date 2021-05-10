@@ -1,9 +1,9 @@
 <template>
   <li v-for="show in currentGuide" :key="show" class="el">
-    <p class="el__item">
+    <div class="el__item">
       <time class="el__time">{{ show.time }}</time>
-      <span class="el__show">{{ show.title }}</span>
-    </p>
+      <p class="el__show">{{ show.title }}</p>
+    </div>
   </li>
 </template>
 
@@ -34,9 +34,15 @@ export default {
 .el {
   &__item {
     margin: 12px 0 0;
+    display: flex;
   }
   &__time {
     margin-right: 16px;
+    display: block;
+    flex: 0 0 40px;
+  }
+  &__show {
+    margin: 0;
   }
 
   &:first-of-type &__time,

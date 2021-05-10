@@ -11,7 +11,7 @@ const routes = [
     path: "/films",
     name: "films",
     components: {
-      nav: () => import("../components/CategoryNav.vue"),
+      nav: () => import("../components/layout/CategoryNav.vue"),
       default: FilmsPage,
     },
   },
@@ -25,23 +25,17 @@ const routes = [
     path: "/tv",
     name: "tv",
     components: {
-      nav: () => import("../components/CategoryNav.vue"),
+      nav: () => import("../components//layout/CategoryNav.vue"),
       default: TvPage,
     },
   },
-  {
-    path: "/auth",
-    name: "auth",
-    component: () =>
-      import(/* webpackChunkName: "auth" */ "../components/Auth"),
-  },
   // linkExactActiveClass: "exactActive"
-  // {
-  //   path: "/:pathMatch(.*)",
-  //   name: "NotFound",
-  //   component: () =>
-  //     import(/* webpackChunkName: "wrong" */ "../pages/PageNotFound"),
-  // },
+  {
+    path: "/:pathMatch(.*)",
+    name: "NotFound",
+    component: () =>
+      import(/* webpackChunkName: "wrong" */ "../pages/PageNotFound"),
+  },
 ];
 
 const router = createRouter({

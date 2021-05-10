@@ -1,5 +1,5 @@
 <template>
-  <a :href="href">
+  <a :href="genreHref">
     <div class="genre" :style="genreStyle">
       <div class="genre__image">
         <!-- <img :src="img" /> -->
@@ -12,13 +12,16 @@
 
 <script>
 export default {
-  props: ["title", "img", "href", "color"],
+  props: ["title", "img", "color", "genreId"],
   data() {
     return {};
   },
   computed: {
     genreStyle() {
       return `background:${this.color}`;
+    },
+    genreHref() {
+      return "/genres/" + this.genreId;
     },
   },
 };
@@ -38,12 +41,18 @@ export default {
   position: relative;
   width: 280px;
   height: 208px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   background-color: gray;
   cursor: pointer;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
 
   &:hover &__image {
     animation: focused 0.5s forwards ease-out;

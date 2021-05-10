@@ -14,9 +14,8 @@ export default {
   },
   actions: {
     async loadTv(context) {
-      const response = await fetch(
-        "https://htc-vue-c9c6c-default-rtdb.firebaseio.com/tv.json"
-      );
+      const db = context.rootGetters.db;
+      const response = await fetch(db.url + "tv.json");
       const responseData = await response.json();
       if (!response.ok) {
         const error = new Error(

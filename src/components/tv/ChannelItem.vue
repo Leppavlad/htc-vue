@@ -44,21 +44,35 @@ export default {
   }
 
   &__logo {
-    flex: 1.2 0 100px;
+    flex: 1.2 0 120px;
     display: grid;
     place-items: center;
 
     img {
-      height: 70px;
+      max-width: 120px;
     }
   }
   &__guide {
-    flex: 2 0 280px;
+    flex: 2.3 1 280px;
+    margin-left: 20px;
   }
 
   &__title {
     font-size: 20px;
     margin: 0 0 17px;
+  }
+  @media screen and (max-width: 1024px) {
+    &__logo {
+      flex-grow: 0.5;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    &__logo {
+      display: none;
+    }
+    &__guide {
+      margin-left: 0;
+    }
   }
 }
 
