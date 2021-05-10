@@ -42,7 +42,7 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   position: relative;
 

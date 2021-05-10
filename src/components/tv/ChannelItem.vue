@@ -39,6 +39,10 @@ export default {
   display: flex;
   margin-bottom: 16px;
 
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
   &__logo {
     flex: 1.2 0 100px;
     display: grid;

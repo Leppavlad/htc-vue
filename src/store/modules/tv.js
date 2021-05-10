@@ -27,7 +27,8 @@ export default {
 
       const now = new Date();
       const date = {
-        day: now.toISOString().slice(0, 10),
+        // day: now.toISOString().slice(0, 10),
+        day: "2021-05-05",
         hour: now.getHours(),
       };
 
