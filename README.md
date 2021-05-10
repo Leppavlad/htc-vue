@@ -1,24 +1,20 @@
 # htc-vue
 
-## Project setup
+Тестовое задание - верстка приложения по макету. Выполнено на Vue с подключением Vue Router и Vuex. Проект инициализирован во Vue CLI. Сборка, соответственно, на Webpack. При написании кода использован препроцессор Scss. 
+
+## Инициализация проекта
+
+### Установка зависимостей
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск локального сервера
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Изначальная база данных проекта за ненахождением достойных открытых api благополучено спарсена с открытых источников. Скрипты парсеров и сами дата-файлы расположены в каталоге src/DATA. Для отправки на БД запускается скрипт из каталога src/DATA/sendData. 
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Авторизация и БД от Google Firebase.
